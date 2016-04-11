@@ -1,4 +1,10 @@
+BeginPackage["OptionsPricing`"]
+
 call::usage := "call[strike, spot, time, vola] returns {theoretical value, delta, gamma, vega, theta}"
+
+put::usage := "put[strike, spot, time, vola] returns {theoretical value, delta, gamma, vega, theta}"
+
+Begin["`Private`"]
 
 call[strike_, spot_, time_, vola_] :=
  Module[
@@ -17,8 +23,6 @@ call[strike_, spot_, time_, vola_] :=
    }
   ]
   
-put::usage := "put[strike, spot, time, vola] returns {theoretical value, delta, gamma, vega, theta}"
-
 put[strike_, spot_, time_, vola_] :=
  Module[
   {
@@ -35,3 +39,7 @@ put[strike_, spot_, time_, vola_] :=
    -spot*dtcdf[d1]*vola/(2*Sqrt[time/365])/365
    }
   ]
+
+End[]
+
+EndPackage[]
